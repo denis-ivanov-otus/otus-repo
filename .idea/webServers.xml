@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d815beca-cf63-4861-8d6c-23e9a2abd34c" name="timeweb" url="">
+        <fileTransfer rootFolder="/home/c/ci41563/" accessType="SFTP" host="vh442.timeweb.ru" port="22" sshConfigId="73f5e0a5-d5c8-4870-bd3a-6161cdba7ec4" sshConfig="ci41563@vh442.timeweb.ru:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

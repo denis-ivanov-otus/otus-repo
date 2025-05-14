@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	name = =Denis Ivanov
+[remote "origin"]
+	url = https://github.com/denis-ivanov-otus/otus-2025-02.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

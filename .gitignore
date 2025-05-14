@@ -1,0 +1,7 @@
+/bitrix/
+/upload/
+/vendor/
+*.pdf
+*.log
+*.txt
+
