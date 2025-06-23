@@ -1,6 +1,9 @@
 /bitrix/
 /upload/
 /vendor/
+/logs/
+/test/
+.idea
 *.pdf
 *.log
 *.txt
