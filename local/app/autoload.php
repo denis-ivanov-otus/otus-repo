@@ -1,9 +1,18 @@
 <?php
-
 spl_autoload_register(function ($className) {
-    $classPath = str_replace('\\', '/', $className);
-    $file = __DIR__."/$classPath.php";
+
+    $prefix = 'App\\';
+    $baseDir = __DIR__ . '/';
+
+    $len = strlen($prefix);
+    if (strncmp($prefix, $className, $len) !== 0) {
+        return;
+    }
+
+    $relativeClass = substr($className, $len);
+    $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+
     if (file_exists($file)) {
-        include_once $file;
+        require $file;
     }
 });
