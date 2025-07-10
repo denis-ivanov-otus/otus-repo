@@ -4,7 +4,7 @@
     <p>
         <?= GetMessage('CUR_CURRENCY') ?> <strong><?= htmlspecialcharsbx($arResult["CURRENCY_NAME"]) ?></strong>
         (<?= htmlspecialcharsbx($arResult["CURRENCY"]) ?>)
-        <?= GetMessage('CUR_BASE')?>> <strong><?= htmlspecialcharsbx($arResult["BASE_CURRENCY_NAME"]) ?></strong>
+        <?= GetMessage('CUR_BASE')?> <strong><?= htmlspecialcharsbx($arResult["BASE_CURRENCY_NAME"]) ?></strong>
         (<?= htmlspecialcharsbx($arResult["BASE_CURRENCY"]) ?>):
         <br>
         <strong><?= number_format($arResult["RATE"], 4) ?></strong>
