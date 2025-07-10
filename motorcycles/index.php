@@ -1,5 +1,7 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+GLOBAL $APPLICATION;
+$APPLICATION->SetTitle("Каталог мотоциклов");
 
 use Bitrix\Main\Loader;
 use Bitrix\Main\DB\SqlExpression;
@@ -84,7 +86,7 @@ $result = MotorcyclesTable::getList([
 ])->fetchAll();
 
 
-echo "<h2>Каталог мотоциклов</h2>";
+
 echo "<table border='1' cellpadding='5' cellspacing='0'>";
 echo "<tr>
     <th>ID</th>
@@ -111,6 +113,8 @@ foreach ($result as $row) {
 }
 
 echo "</table>";
+
+require_once ($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');
 
 
 
