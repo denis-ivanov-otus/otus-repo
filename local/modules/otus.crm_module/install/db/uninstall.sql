@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS b_otus_company_visits;
