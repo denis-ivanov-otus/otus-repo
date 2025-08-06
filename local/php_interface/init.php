@@ -1,4 +1,7 @@
 <?php
+require_once('const.php');
+require_once('agents/agents.php');
+
 define ('DEBUG_FILE_NAME', $_SERVER['DOCUMENT_ROOT'].'/logs/'.date("Y-m-d").'.log');
 
 if(file_exists(__DIR__."/src/autoloader.php")){
@@ -16,3 +19,5 @@ function pr($var, $type = false) {
         print_r($var);
     echo '</pre>';
 }
+
+
