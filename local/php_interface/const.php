@@ -4,3 +4,6 @@ const IBLOCK_CATALOG_ID = 14;
 
 //смарт-процесс Запросы на закупку
 const SP_PARTS_REQUEST_ID = 1040;
+
+//смарт-процесс Гараж
+const SP_GARAGE_ID = 1036;

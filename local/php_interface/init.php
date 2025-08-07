@@ -1,6 +1,7 @@
 <?php
 require_once('const.php');
 require_once('agents/agents.php');
+require_once('handlers/deals.php');
 
 define ('DEBUG_FILE_NAME', $_SERVER['DOCUMENT_ROOT'].'/logs/'.date("Y-m-d").'.log');
 
@@ -19,5 +20,3 @@ function pr($var, $type = false) {
         print_r($var);
     echo '</pre>';
 }
-
-
