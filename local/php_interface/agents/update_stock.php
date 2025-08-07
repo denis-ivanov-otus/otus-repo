@@ -7,9 +7,13 @@ use Bitrix\Catalog\MeasureTable;
 use Bitrix\Crm\Service\Container;
 use Bitrix\Crm\ProductRow;
 
+use CBPDocument;
+use CBPWorkflowTemplateLoader;
+
 Loader::includeModule('iblock');
 Loader::includeModule('catalog');
 Loader::includeModule('crm');
+Loader::includeModule('bizproc');
 
 $IBLOCK_ID = IBLOCK_CATALOG_ID;
 $entityTypeId = SP_PARTS_REQUEST_ID;
@@ -74,7 +78,7 @@ foreach ($products as $product) {
     }
 }
 
-//Создаём смарт-процесс с привязкой товаров через setProductRows()
+//Создаём смарт-процесс с привязкой товаров
 if (!empty($productsToOrder)) {
     try {
         $factory = Container::getInstance()->getFactory($entityTypeId);
@@ -92,6 +96,28 @@ if (!empty($productsToOrder)) {
 
             if ($saveResult->isSuccess()) {
                 AddMessage2Log("Создана заявка на закупку ID {$item->getId()} с " . count($productsToOrder) . " товарами", "stock_agent");
+
+                //Запуск БП на закупку
+                $bpTemplateId = BP_ORDER_PARTS_TEMPLATE_ID;
+
+                $elemId = $item->getId();
+                $res = \CBPDocument::StartWorkflow(
+                    $bpTemplateId, // Идентификатор шаблона БП
+                    [
+                        "crm",
+                        "Bitrix\Crm\Integration\BizProc\Document\Dynamic", // Идентификатор документа БП
+                        "DYNAMIC_" . $entityTypeId . "_" . $elemId,
+                    ],
+                    ["TargetUser" => "user_1"],
+                    $arErrorsTmp
+                );
+                if (count($arErrorsTmp) == 0) {
+                    AddMessage2Log("Запущен БП на закупку запчастей для элемента СП ".$elemId);
+
+                } else {
+                    AddMessage2Log("Ошибка запуска БП на закупку запчастей для элемента СП ".$elemId);
+                }
+
             } else {
                 AddMessage2Log("Ошибка сохранения заявки: " . implode('; ', $saveResult->getErrorMessages()), "stock_agent");
             }
